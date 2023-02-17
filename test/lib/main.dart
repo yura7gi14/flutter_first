@@ -14,7 +14,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const EditPage();
+        return const CatalogPage();
       },
       routes: <RouteBase>[
         GoRoute(

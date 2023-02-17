@@ -1,62 +1,77 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project/db/database.dart';
 import 'package:logger/logger.dart';
 import 'package:project/main.dart';
 
 final logger = Logger();
+//Controllerの定義
+final controller = TextEditingController();
 
-void main() => runApp(const EditPage());
+void main() => runApp(const CatalogPage());
 
-class EditPage extends StatelessWidget {
-  const EditPage({super.key});
+class CatalogPage extends StatelessWidget {
+  const CatalogPage({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: MyApp(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  // DatabaseHelper クラスのインスタンス取得
-  final dbHelper = DatabaseHelper.instance;
-
-  MyHomePage({super.key});
-
-  // homepage layout
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final category = dbHelper.getCategory();
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('修正画面'),
+        title: Text('修正画面'),
       ),
-      body: FutureBuilder(
-        future: dbHelper.getCategory(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.hasError) {
-            final error = snapshot.error;
-            return Text('$error');
-          } else if (snapshot.hasData) {
-            List<String> result = snapshot.data!;
-            return Container(
-              child: ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Text(snapshot.data[index]);
-                  }),
-            );
-          } else {
-            return const Text("else");
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.go('/register'),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          children: <Widget>[
+            TextField(
+              autofocus: true,
+              decoration: InputDecoration(hintText: 'カテゴリー'),
+            ),
+            TextField(
+              autofocus: true,
+              decoration: InputDecoration(hintText: '分類'),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'[0-9]')), //英小文字のみ許可
+                ],
+                decoration: InputDecoration(hintText: '購入日'),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'[0-9]')), //英小文字のみ許可
+                ],
+                decoration: InputDecoration(hintText: '消費期限'),
+              ),
+            ),
+            TextField(
+              autofocus: true,
+              decoration: InputDecoration(hintText: '写真'),
+            ),
+            TextField(
+              autofocus: true,
+              decoration: InputDecoration(hintText: 'その他メモ'),
+            ),
+          ],
+        ),
       ),
     );
   }
