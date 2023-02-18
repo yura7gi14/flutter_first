@@ -21,20 +21,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const CatalogCreate(title: 'image_picker'),
+      //home: RegistryPage(title: 'image_picker'),
     );
   }
 }
 
-class CatalogCreate extends StatefulWidget {
-  const CatalogCreate({super.key, required this.title});
-  final String title;
-
+class RegistryPage extends StatefulWidget {
   @override
-  State<CatalogCreate> createState() => _MyHomePageState();
+  _RegistryPageState createState() => _RegistryPageState();
 }
 
-class _MyHomePageState extends State<CatalogCreate> {
+class _RegistryPageState extends State<RegistryPage> {
   final dbHelper = DatabaseHelper.instance; //databaseインスタンスを作成
   final picker = ImagePicker(); //画像をギャラリーから取得するために使用
   File? _image; //画像を取得

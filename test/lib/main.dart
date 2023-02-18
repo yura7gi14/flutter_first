@@ -86,7 +86,7 @@ class _CatalogPageState extends State<CatalogPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EditPage()),
+                  MaterialPageRoute(builder: (context) => RegistryPage()),
                 );
               },
               tooltip: 'Increment',
