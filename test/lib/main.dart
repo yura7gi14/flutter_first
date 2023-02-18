@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:project/db/database.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:project/screens/registry.dart';
+import 'package:project/screens/edit.dart';
 
 final logger = Logger();
 
@@ -54,7 +56,6 @@ class _CatalogPageState extends State<CatalogPage> {
                 return GestureDetector(
                   onTap: () {
                     // 詳細画面に遷移？ （未実装）
-
                     // testcode
                     // showDialog(
                     //   context: context,
@@ -62,6 +63,10 @@ class _CatalogPageState extends State<CatalogPage> {
                     //     content: Text('test'),
                     //   ),
                     // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EditPage()),
+                    );
                   },
                   child: ListTile(
                     title: Text(itemName),
@@ -81,7 +86,7 @@ class _CatalogPageState extends State<CatalogPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => EditPage()),
                 );
               },
               tooltip: 'Increment',
