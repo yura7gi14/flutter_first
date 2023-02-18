@@ -115,23 +115,19 @@ class MyApp extends StatelessWidget {
             SizedBox(
               height: 5,
             ),
-            Scaffold(
-                body: Center(
-                    // 取得した画像を表示(ない場合はメッセージ)
-                    child: _image == null
-                        ? Text(
-                            '写真を選択してください',
-                            style: Theme.of(context).textTheme.headline4,
-                          )
-                        : Image.file(File(_image!.path))),
-                floatingActionButton: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // ギャラリーから取得するボタン
-                      FloatingActionButton(
-                          onPressed: getImageFromGarally,
-                          child: const Icon(Icons.photo_album))
-                    ])),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('戻る'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('編集'),
+                ),
+              ],
+            ),
           ],
         ),
       ),
