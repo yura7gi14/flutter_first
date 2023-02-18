@@ -281,6 +281,12 @@ class _MyHomePageState extends State<CatalogCreate> {
                         Navigator.pop(context);
                       },
                     ),
+                    ElevatedButton(
+                      child: Text('削除'),
+                      onPressed: () {
+                        //データベースからデータを消す
+                      },
+                    ),
                   ],
                 ),
               ),

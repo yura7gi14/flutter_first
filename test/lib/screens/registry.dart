@@ -4,7 +4,6 @@ import 'package:project/db/database.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:project/main.dart';
-import 'package:project/screens/caatalog.dart';
 
 void main() {
   runApp(const MyApp());
