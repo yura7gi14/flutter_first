@@ -165,7 +165,7 @@ class _EditPageState extends State<EditPage> {
                         color: Colors.blue,
                       ),
                     ),
-                    hintText: ' 例) 2023/3/5',
+                    hintText: ' 例) 20230305',
                   ),
                   //入力した購入日を格納
                   onChanged: (text) {
@@ -196,7 +196,7 @@ class _EditPageState extends State<EditPage> {
                         color: Colors.blue,
                       ),
                     ),
-                    hintText: ' 例) 2023/5/20',
+                    hintText: ' 例) 20230520',
                   ),
                   //入力した期限を格納
                   onChanged: (text) {
@@ -219,13 +219,15 @@ class _EditPageState extends State<EditPage> {
                 height: 50,
                 child: TextField(
                   decoration: InputDecoration(
-                      //contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Colors.blue,
-                        ),
+                    //contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
                       ),
-                      hintText: ' メモしたいことがあれば入力して下さい'),
+                    ),
+                    hintText: ' メモしたいことがあれば入力して下さい',
+                  ),
+
                   //入力したメモを格納
                   onChanged: (text) {
                     memo = text;
@@ -277,6 +279,9 @@ class _EditPageState extends State<EditPage> {
                       onPressed: () {
                         //データベースに情報を登録し、一覧画面に戻る
                         _update();
+                        //_update(nanika,categoly,name,purchaseDate,consumeDate,memo,);
+                        //もしくは
+                        //_update.categoly=categolyみたいな何かなのか
                         Navigator.pop(context);
                       },
                     ),
